@@ -30,4 +30,50 @@ const playerInfo9 = selectedPlayerList("select-btn-9", "player-name-9");
 
 // SELECTION AREA END
 
+// CALCULATION AREA START
 
+// Common Function
+function calculateCost(costFieldSection) {
+    const costField = document.getElementById(costFieldSection);
+    const costInString = costField.value;
+    const cost = parseFloat(costInString);
+    cost.value = '';
+    return cost;
+
+};
+document.getElementById("calculateButton").addEventListener('click', function () {
+    const playerCostField = document.getElementById("costOfPlayer");
+    const PlayerCostString = playerCostField.value;
+    const PlayerCost = parseFloat(PlayerCostString);
+    PlayerCost.value = '';
+
+    const totalCostField = document.getElementById("totalPlayerCost");
+    const totalCostString = totalCostField.innerText;
+    const totalCost = parseFloat(totalCostString);
+
+    const totalPlayers = document.getElementById("selected-list");
+    const PlayerNumber = totalPlayers.childElementCount;
+
+    const newTotalCost = (PlayerCost * PlayerNumber) + totalCost;
+    totalCostField.innerText = newTotalCost;
+});
+
+
+
+document.getElementById("costOfTotal").addEventListener('click', function () {
+    const managerCost = calculateCost("costOfManager");
+    const coachCost = calculateCost("costOfCoach");
+
+
+    const totalCostField = document.getElementById("totalPlayerCost");
+    const totalCostInString = totalCostField.innerText;
+    const totalCost = parseFloat(totalCostInString);
+
+    const overallCostField = document.getElementById("totalCost");
+    const overallCostInString = overallCostField.innerText;
+    const overallCost = parseFloat(overallCostInString);
+
+    const finalCost = managerCost + coachCost + totalCost;
+    overallCostField.innerText = finalCost;
+});
+// CALCULATION AREA END
