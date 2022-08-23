@@ -37,7 +37,7 @@ function calculateCost(costFieldSection) {
     const costField = document.getElementById(costFieldSection);
     const costInString = costField.value;
     const cost = parseFloat(costInString);
-    cost.value = '';
+    costField.value = '';
     return cost;
 
 };
@@ -45,7 +45,7 @@ document.getElementById("calculateButton").addEventListener('click', function ()
     const playerCostField = document.getElementById("costOfPlayer");
     const PlayerCostString = playerCostField.value;
     const PlayerCost = parseFloat(PlayerCostString);
-    PlayerCost.value = '';
+    playerCostField.value = '';
 
     const totalCostField = document.getElementById("totalPlayerCost");
     const totalCostString = totalCostField.innerText;
